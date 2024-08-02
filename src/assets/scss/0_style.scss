@@ -41,7 +41,12 @@ body{
     color: #000;
 }
 
-$btnColorFixed : #000;
+:root{
+    --mainColor: #185891;
+    --mainColor2: #ffc107;
+}
+
+$btnColorFixed : var(--mainColor2);
 
 @mixin btn {
 
