@@ -106,29 +106,5 @@
     margin-bottom: 20px;
 }
 .header__numberLink {
-    background-color: var(--mainColor);
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 20px;
-    padding: 10px 30px 10px 50px;
-    border-radius: 10px;
-    transition: .3s;
-    position: relative;
-    &::before{
-        content: '';
-        position: absolute;
-        background-image: url('../img/telicon.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 35px;
-        aspect-ratio: 1;
-        left: 5px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    &:hover{
-        background-color: #0f426e;
-        color: #fff;
-    }
+   @include btn;
 }

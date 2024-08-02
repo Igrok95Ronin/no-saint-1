@@ -46,29 +46,40 @@ body{
     --mainColor2: #ffc107;
 }
 
-$btnColorFixed : var(--mainColor2);
+$btnColorFixed : var(--mainColor);
 
 @mixin btn {
+    background-color: var(--mainColor);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 20px;
+    padding: 10px 30px 10px 50px;
+    border-radius: 10px;
+    transition: .3s;
+    span{
+    position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            background-image: url('../img/telicon.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 35px;
+            aspect-ratio: 1;
+            left: -45px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
 
+    &:hover{
+        background-color: #0f426e;
+        color: #fff;
+    }
 }
-// <div class="text">sdf</div>
-// <style>
-//     .text {
-//         background-color: red;
-//         padding: 10px;
-//         width: 200px;
-//         position: relative;
-//     }
-//     .text::before {
-//         content: '';
-//         position: absolute;
-//         background-color:red;
-//         width: 10px;
-//         height: 100%;
-//         right: -10px;
-//         top: 0;
-//         clip-path: polygon(0% 0%, 100% 50%, 100% 50%, 0% 100%);
-//     }
-
-
-// </style>
+@mixin h2Title{
+    color: var(--mainColor);
+    font-weight: 700;
+    font-size: clamp(26px, 5vw, 32px);
+}
