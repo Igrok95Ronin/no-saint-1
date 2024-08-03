@@ -1,0 +1,65 @@
+.quickly {
+    margin-top: 50px;
+}
+.quickly__box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.quickly__imgWrp {
+    max-width: 100%;
+    max-height: 100%;
+}
+.quickly__img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+.quickly__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.quickly__title {
+    @include h2Title;
+}
+.quickly__txt {
+    line-height: 25px;
+}
+.quickly__inner {
+    background-color: var(--mainColor);
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.quickly__link {
+    color: #fff;
+    padding: 10px;
+    padding-left: 45px;
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        background-image: url('../img/telicon.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 35px;
+        aspect-ratio: 1;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    &:hover{
+        color: #fff;
+    }
+}
+.quickly__link:nth-child(2) {
+    &::before{
+        background-image: url('../img/message.png');
+    }
+}
