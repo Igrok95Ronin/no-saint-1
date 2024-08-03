@@ -1,11 +1,11 @@
 <?php
-$site_data      = json_decode(file_get_contents('http://templates.jquery.link/api/' . $_SERVER['HTTP_HOST']), true);
+$site_data      = json_decode(file_get_contents('http://local.jquery.link/api/' . $_SERVER['HTTP_HOST']), true);
 
 $phone_name     = $site_data['phone_name'];
 $phone_href     = $site_data['phone_href'];
 
-$text           = str_replace('+', ' ', trim($_GET['t'] ?? 'Entrumpelung'));
-$city           = str_replace('+', ' ', trim($_GET['n'] ?? 'in der nahe'));
+$text           = str_replace('+', ' ', trim($_GET['t'] ?? 'Rørlegger'));
+$city           = str_replace('+', ' ', trim($_GET['n'] ?? ''));
 
 $title = $text . ' ' . $city;
 ?>
@@ -34,22 +34,22 @@ $title = $text . ' ' . $city;
                 <div class="col-12 containerP0">
                     <div class="header__box">
                         <div class="header__left">
-                            <h1 class="header__title">Rørlegger ++</h1>
+                            <h1 class="header__title"><?= $title ?></h1>
                             <div class="imgWrp">
                                 <img class="header__img" src="./assets/img/main.jpg" alt="main">
                             </div>
                         </div>
                         <div class="header__right">
-                            <h2 class="header__subTitle">Rørlegger i +nærheten+</h2>
-                            <p class="header__txt">Trenger du en <strong>rørlegger i</strong> +<strong>nærheten</strong>+? Vi er  tilgjengelige 24/7, både for nødstilfeller og  vanlige oppdrag. Ring oss når som helst – vi  er alltid her for å hjelpe deg med dine  rørleggerbehov.</p>
+                            <h2 class="header__subTitle">Rørlegger i <?= $city === "" ? "nærheten" : $city ?></h2>
+                            <p class="header__txt">Trenger du en <strong>rørlegger i</strong> <strong><?= $city === "" ? "nærheten" : $city ?></strong> ? Vi er  tilgjengelige 24/7, både for nødstilfeller og  vanlige oppdrag. Ring oss når som helst – vi  er alltid her for å hjelpe deg med dine  rørleggerbehov.</p>
                             <div class="header__inner">
                                 <div class="header__imgWrpReviews">
                                     <img class="header__imgReviews" src="./assets/img/reviews.png" alt="reviews">
                                 </div>
-                                <p class="header__plumber">Rørlegger i +nærheten+</p>
+                                <p class="header__plumber">Rørlegger i <?= $city === "" ? "nærheten" : $city ?></p>
                             </div>
                             <div class="header__numberLinkWrp">
-                                <a class="header__numberLink" href="tel:111222333"><span>111222333</span></a>
+                                <a class="header__numberLink" href="<?= $phone_href ?>"><span><?= $phone_name ?></span></a>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ $title = $text . ' ' . $city;
                                 <div class="comment__imgWrp2">
                                     <img class="comment__img2" src="./assets/img/img2.jpg" alt="img2">
                                 </div>
-                                <h2 class="comment__title">Rørlegger i +nærheten+  tilgjengelig 24/7</h2>
+                                <h2 class="comment__title">Rørlegger i <?= $city === "" ? "nærheten" : $city ?>  tilgjengelig 24/7</h2>
                                 <p class="comment__txt">Er du i nød og trenger en rørlegger? Vårt team av  profesjonelle rørleggere er klare til å hjelpe deg når  som helst, dag og natt. Enten det er en rørbrudd  eller en rørforstoppelse, står vi klare til å løse alle  dine sanitærproblemer. Kontakt oss for rask og  pålitelig service i ditt nærområde, uansett tidspunkt.  Vi er her for å sikre at ditt hjem er trygt og  funksjonelt, døgnet rundt.</p>
                             </div>
                         </div>
@@ -89,9 +89,9 @@ $title = $text . ' ' . $city;
                             </div>
                             <div class="quickly__content">
                                 <h2 class="quickly__title">Raskt på plass: Innen 40 til 60  minutter</h2>
-                                <p class="quickly__txt">Når et sanitærnotfall oppstår, kan du stole på oss  for rask og effektiv hjelp. Vi er tilgjengelige 24  timer i døgnet for å håndtere alle typer  nødsituasjoner, fra rørbrudd til tette rør. Vårt  erfarne team vil være på plass innen 40 til 60  minutter for å sikre at problemet blir løst raskt og  effektivt. Vi <strong>tilbyr tjenester i +ditt nærområde+</strong>  og garanterer profesjonell reparasjon og service  når du trenger det mest. Kontakt oss umiddelbart  ved sanitærnødsituasjoner, og vi sørger for at alt  fungerer som det skal igjen.</p>
+                                <p class="quickly__txt">Når et sanitærnotfall oppstår, kan du stole på oss  for rask og effektiv hjelp. Vi er tilgjengelige 24  timer i døgnet for å håndtere alle typer  nødsituasjoner, fra rørbrudd til tette rør. Vårt  erfarne team vil være på plass innen 40 til 60  minutter for å sikre at problemet blir løst raskt og  effektivt. Vi <strong>tilbyr tjenester i <?= $city === "" ? "ditt nærområde" : $city ?></strong>  og garanterer profesjonell reparasjon og service  når du trenger det mest. Kontakt oss umiddelbart  ved sanitærnødsituasjoner, og vi sørger for at alt  fungerer som det skal igjen.</p>
                                 <div class="quickly__inner">
-                                    <a class="quickly__link" href="tel:111222333"><span>RINGE</span></a>
+                                    <a class="quickly__link" href="<?= $phone_href ?>"><span>RINGE</span></a>
                                     <a class="quickly__link" href="#anchorForm"><span>E-POST</span></a>
                                 </div>
                             </div>
@@ -133,10 +133,10 @@ $title = $text . ' ' . $city;
                                 <img class="help__img" src="./assets/img/img4.jpg" alt="">
                             </div>
                             <div class="help__content">
-                                <h2 class="help__title">WC tett ++? Trenger hjelp?</h2>
+                                <h2 class="help__title">WC tett <?= $city ?> ? Trenger hjelp?</h2>
                                 <p class="help__txt">Hvis du har en WC-, rør- eller kanalforstoppelse –  uansett hvilken type forstoppelse det er – for våre  eksperter er det ikke noe problem. Våre  medarbeidere er utstyrt med moderne maskiner  og verktøy og kan hjelpe deg døgnet rundt med  enhver forstoppelse, stor eller liten. Ring oss, og  vi er på plass innen en time.</p>
                                 <div class="help__linkWrp">
-                                    <a class="help__link" href="tel:111222333" ><span>111222333</span></a>
+                                    <a class="help__link" href="<?= $phone_href ?>" ><span><?= $phone_name?></span></a>
                                 </div>
                             </div>
                         </div>
@@ -153,8 +153,8 @@ $title = $text . ' ' . $city;
                                 <img class="help__img" src="./assets/img/img5.jpg" alt="">
                             </div>
                             <div class="help__content">
-                                <h2 class="help__title">Umiddelbar hjelp ved lekkasjer  og rørbrudd i +nærheten+</h2>
-                                <p class="help__txt">Når uhellet er ute og du oppdager en lekkasje  eller et rørbrudd, trenger du rask og pålitelig hjelp.  Vi tilbyr umiddelbar assistanse ved lekkasjer og  <strong>rørbrudd i +nærheten+</strong>, med mål om å løse  problemene dine så raskt som mulig. Vårt team av  erfarne fagfolk er alltid tilgjengelig og rykker ut  med en gang for å utføre nødvendige reparasjoner  på stedet. Vi forstår viktigheten av å handle raskt  for å minimere skade og ulempe, og vi er her for å  sikre at du får den hjelpen du trenger, akkurat når  du trenger det. Med vår service kan du være trygg  på at problemer blir løst effektivt og profesjonelt,  hver gang.</p>
+                                <h2 class="help__title">Umiddelbar hjelp ved lekkasjer  og rørbrudd i <?= $city === "" ? "nærheten" : $city ?></h2>
+                                <p class="help__txt">Når uhellet er ute og du oppdager en lekkasje  eller et rørbrudd, trenger du rask og pålitelig hjelp.  Vi tilbyr umiddelbar assistanse ved lekkasjer og  <strong>rørbrudd i <?= $city === "" ? "nærheten" : $city ?></strong>, med mål om å løse  problemene dine så raskt som mulig. Vårt team av  erfarne fagfolk er alltid tilgjengelig og rykker ut  med en gang for å utføre nødvendige reparasjoner  på stedet. Vi forstår viktigheten av å handle raskt  for å minimere skade og ulempe, og vi er her for å  sikre at du får den hjelpen du trenger, akkurat når  du trenger det. Med vår service kan du være trygg  på at problemer blir løst effektivt og profesjonelt,  hver gang.</p>
                             </div>
                         </div>
                     </div>
@@ -171,14 +171,14 @@ $title = $text . ' ' . $city;
                             </div>
                             <div class="help__content">
                                 <h2 class="help__title">Dine eksperter for  førsteklasses VVS-  installasjoner</h2>
-                                <p class="help__txt">Vårt team av erfarne fagfolk er dedikert til å levere  førsteklasses <strong>VVS-installasjoner i +ditt  nærområde+</strong>. Vi spesialiserer oss på installasjon  og reparasjon av WC, bad og armaturer, og  sørger for at alt arbeid utføres med høyeste  kvalitet og presisjon. Enten du trenger hjelp med å  oppgradere baderomsinnredningen eller fikse  lekkasjer og rørbrudd, kan du stole på vår  ekspertise. Vi tilbyr skreddersydde løsninger som  passer dine behov og sikrer optimal funksjonalitet.  Kontakt oss for pålitelige og effektive VVS-  tjenester nær deg.</p>
+                                <p class="help__txt">Vårt team av erfarne fagfolk er dedikert til å levere  førsteklasses <strong>VVS-installasjoner i <?= $city === "" ? "ditt  nærområde" : $city ?></strong>. Vi spesialiserer oss på installasjon  og reparasjon av WC, bad og armaturer, og  sørger for at alt arbeid utføres med høyeste  kvalitet og presisjon. Enten du trenger hjelp med å  oppgradere baderomsinnredningen eller fikse  lekkasjer og rørbrudd, kan du stole på vår  ekspertise. Vi tilbyr skreddersydde løsninger som  passer dine behov og sikrer optimal funksjonalitet.  Kontakt oss for pålitelige og effektive VVS-  tjenester nær deg.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class='forms'>
+        <section id='anchorForm' class='forms'>
             <div class='forms__wrapper'>
                <div class='container-fluid'>
                   <div class='row'>
@@ -229,7 +229,7 @@ $title = $text . ' ' . $city;
         </section>
         <section class='btnFixed'>
             <div class='btnFixed__box'>
-                <a class="btnFixed__btn" href="<?= $phone_href ?>" ><span>111222333</span></a>
+                <a class="btnFixed__btn" href="<?= $phone_href ?>" ><span><?= $phone_name?></span></a>
             </div>
         </section>
     </main>
@@ -237,7 +237,7 @@ $title = $text . ' ' . $city;
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 container">© 2023</div>
+                <div class="col-12 container">© 2024</div>
             </div>
         </div>
     </footer>
