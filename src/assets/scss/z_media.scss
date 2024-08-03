@@ -1,3 +1,18 @@
+@media(max-width: 767px) {
+    .header__box {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .header__subTitle {
+        margin-top: -10px;
+    }
+    .comment__box,
+    .quickly__box,
+    .help__box {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media(max-width: 500px) {
     .btnFixedD {
         display: none;

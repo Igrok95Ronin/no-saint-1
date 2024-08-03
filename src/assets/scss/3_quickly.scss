@@ -9,11 +9,14 @@
 .quickly__imgWrp {
     max-width: 100%;
     max-height: 100%;
+    padding: 0 10px;
+
 }
 .quickly__img {
     width: 100%;
     height: 100%;
     border-radius: 5px;
+    object-fit: cover;
 }
 .quickly__content {
     display: flex;
@@ -23,9 +26,11 @@
 }
 .quickly__title {
     @include h2Title;
+    padding: 0 10px;
 }
 .quickly__txt {
     line-height: 25px;
+    padding: 0 10px;
 }
 .quickly__inner {
     background-color: var(--mainColor);
